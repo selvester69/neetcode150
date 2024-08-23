@@ -19,12 +19,7 @@ public class ReverseLinkedLIst {
 
     public static void main(String[] args) {
         ReverseLinkedLIst list = new ReverseLinkedLIst();
-        int[] temp = new int[] { 1, 2, 3 };
-        ListNode z = new ListNode(0);
-        for (int i : temp) {
-            ListNode y = new ListNode(i, z);
-            z = y;
-        }
+        ListNode z = list.createList(new int[] { 0, 1, 2, 3 });
         list.printLinkedList(z);
         ListNode res = list.reverseList(z);
         System.out.println("==========");
@@ -36,6 +31,15 @@ public class ReverseLinkedLIst {
             System.out.println(head.val);
             head = head.next;
         }
+    }
+
+    public ListNode createList(int[] nums) {
+        ListNode z = null;
+        for (int index = nums.length - 1; index >= 0; index--) {
+            ListNode y = new ListNode(nums[index], z);
+            z = y;
+        }
+        return z;
     }
 
 }
